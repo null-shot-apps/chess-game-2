@@ -83,12 +83,12 @@ const PIECE_UNICODE: Record<Color, Record<PieceType, string>> = {
     pawn: '♙',
   },
   black: {
-    king: '♚',
-    queen: '♛',
-    rook: '♜',
-    bishop: '♝',
-    knight: '♞',
-    pawn: '♟',
+    king: '♔',
+    queen: '♕',
+    rook: '♖',
+    bishop: '♗',
+    knight: '♘',
+    pawn: '♙',
   },
 };
 
@@ -472,7 +472,7 @@ export default function ChessGame() {
   const { board, currentTurn, selectedSquare, legalMoves, lastMove, gameStatus } = gameState;
 
   return (
-    <div className="h-[100dvh] w-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
+    <div className="h-[100dvh] w-full bg-black flex items-center justify-center p-4">
       <div className="flex flex-col items-center gap-6 max-w-4xl w-full">
         {/* Status Bar */}
         <div className="flex items-center justify-between w-full max-w-[600px] px-4">
@@ -502,7 +502,7 @@ export default function ChessGame() {
 
         {/* Chess Board */}
         <div className="relative">
-          <div className="grid grid-cols-8 gap-0 border-4 border-slate-700 shadow-2xl">
+          <div className="grid grid-cols-8 gap-0 border-4 border-zinc-950 shadow-2xl">
             {board.map((row, rowIndex) =>
               row.map((piece, colIndex) => {
                 const isLight = (rowIndex + colIndex) % 2 === 0;
@@ -524,13 +524,17 @@ export default function ChessGame() {
                       w-[60px] h-[60px] sm:w-[70px] sm:h-[70px] md:w-[75px] md:h-[75px]
                       flex items-center justify-center text-4xl sm:text-5xl
                       transition-all duration-150 relative
-                      ${isLight ? 'bg-slate-300' : 'bg-slate-600'}
+                      ${isLight ? 'bg-zinc-700' : 'bg-zinc-900'}
                       ${isSelected ? 'ring-4 ring-cyan-400 ring-inset' : ''}
                       ${isLastMoveSquare ? 'bg-opacity-70' : ''}
                       hover:brightness-110
                     `}
                   >
-                    {piece && PIECE_UNICODE[piece.color][piece.type]}
+                    {piece && (
+                      <span className={piece.color === 'white' ? 'text-white' : 'text-black'}>
+                        {PIECE_UNICODE[piece.color][piece.type]}
+                      </span>
+                    )}
                     {isLegalMove && (
                       <div
                         className={`absolute inset-0 flex items-center justify-center pointer-events-none`}
@@ -578,6 +582,11 @@ export default function ChessGame() {
     </div>
   );
 }
+
+
+
+
+
 
 
 
