@@ -285,7 +285,7 @@ function generatePseudoLegalMoves(board: Board, from: Position): Position[] {
     }
   } else {
     // Sliding pieces: rook, bishop, queen
-    let directions: Array<[number, number]> = [];
+    const directions: Array<[number, number]> = [];
     if (type === 'rook' || type === 'queen') {
       directions.push([-1, 0], [1, 0], [0, -1], [0, 1]);
     }
@@ -489,7 +489,7 @@ export default function ChessGame() {
               <span className="text-orange-400">Check!</span>
             )}
             {gameStatus === 'playing' && (
-              <span className="capitalize">{currentTurn}'s turn</span>
+              <span className="capitalize">{currentTurn}&apos;s turn</span>
             )}
           </div>
           <button
@@ -582,6 +582,7 @@ export default function ChessGame() {
     </div>
   );
 }
+
 
 
 
