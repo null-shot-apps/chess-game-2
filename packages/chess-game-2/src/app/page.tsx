@@ -502,7 +502,7 @@ export default function ChessGame() {
 
         {/* Chess Board */}
         <div className="relative">
-          <div className="grid grid-cols-8 gap-0 border-4 border-amber-900 shadow-2xl">
+          <div className="grid grid-cols-8 gap-0 border-4 border-slate-700 shadow-2xl">
             {board.map((row, rowIndex) =>
               row.map((piece, colIndex) => {
                 const isLight = (rowIndex + colIndex) % 2 === 0;
@@ -524,8 +524,8 @@ export default function ChessGame() {
                       w-[60px] h-[60px] sm:w-[70px] sm:h-[70px] md:w-[75px] md:h-[75px]
                       flex items-center justify-center text-4xl sm:text-5xl
                       transition-all duration-150 relative
-                      ${isLight ? 'bg-amber-100' : 'bg-amber-700'}
-                      ${isSelected ? 'ring-4 ring-blue-500 ring-inset' : ''}
+                      ${isLight ? 'bg-slate-300' : 'bg-slate-600'}
+                      ${isSelected ? 'ring-4 ring-cyan-400 ring-inset' : ''}
                       ${isLastMoveSquare ? 'bg-opacity-70' : ''}
                       hover:brightness-110
                     `}
@@ -538,8 +538,8 @@ export default function ChessGame() {
                         <div
                           className={`rounded-full ${
                             piece
-                              ? 'w-full h-full border-4 border-green-500 border-opacity-60'
-                              : 'w-4 h-4 bg-green-500 bg-opacity-60'
+                              ? 'w-full h-full border-4 border-cyan-400 border-opacity-70'
+                              : 'w-4 h-4 bg-cyan-400 bg-opacity-70'
                           }`}
                         />
                       </div>
@@ -578,4 +578,6 @@ export default function ChessGame() {
     </div>
   );
 }
+
+
 
